@@ -62,4 +62,14 @@ public class CarDAOImpl implements CarDAO {
         return modelQuery.getResultList();
 
     }
+
+    @Override
+    public void update(Car car) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
 }
