@@ -11,12 +11,11 @@ public interface CarDAO {
 
     List<Car> findAll();
 
-    List<Car> findByManufacter(String manufacter);
+    List<Car> findByManufacturer(String manufacturer);
 
     List<Car> findByModel(String model);
 
     void update(Car car);
 
     void delete(int id);
-
 }

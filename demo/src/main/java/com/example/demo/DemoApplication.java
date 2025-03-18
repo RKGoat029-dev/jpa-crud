@@ -48,16 +48,16 @@ public class DemoApplication {
 						findAllCars(carDAO);
 						break;
 					case 4:
-						findByManufacturer(scanner, carDAO); // Corregido aquí
+						findByManufacturer(scanner, carDAO);
 						break;
 					case 5:
 						findByModel(scanner, carDAO);
 						break;
 					case 6:
-						update(scanner, carDAO);
+						updateCar(scanner, carDAO);
 						break;
 					case 7:
-						delete(scanner, carDAO);
+						deleteCar(scanner, carDAO);
 						break;
 					case 0:
 						System.out.println("Saliendo...");
@@ -69,4 +69,11 @@ public class DemoApplication {
 		};
 	}
 
+	private void createCar(Scanner scanner, CarDAO carDAO) {
+		System.out.print("Fabricante: ");
+		String manufacturer = scanner.nextLine();
+		System.out.print("Modelo: ");
+		String model = scanner.nextLine();
+		Car car = new Car();
+	}
 }

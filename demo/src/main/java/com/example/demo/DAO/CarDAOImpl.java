@@ -15,7 +15,7 @@ public class CarDAOImpl implements CarDAO {
     private final EntityManager entityManager;
 
     @Autowired
-    public CarDAOImpl( EntityManager entityManager ) { this.entityManager = entityManager; }
+    public CarDAOImpl(EntityManager entityManager) { this.entityManager = entityManager; }
 
     @Override @Transactional
     public void save(Car car) { this.entityManager.persist(car); }
@@ -25,43 +25,31 @@ public class CarDAOImpl implements CarDAO {
 
     @Override
     public List<Car> findAll() {
-
-        TypedQuery<Car> allQuery;
-
-        allQuery = entityManager.createQuery("FROM Car", Car.class);
-
+        TypedQuery<Car> allQuery = entityManager.createQuery("FROM Car", Car.class);
         return allQuery.getResultList();
-
     }
 
     @Override
     public List<Car> findByManufacter(String manufacter) {
+        return List.of();
+    }
 
-        TypedQuery<Car> manufacterQuery;
-
-        manufacterQuery = entityManager.createQuery(
-                "FROM Car WHERE manufacter=:manufacter", Car.class
+    @Override
+    public List<Car> findByManufacturer(String manufacturer) {
+        TypedQuery<Car> manufacturerQuery = entityManager.createQuery(
+                "FROM Car WHERE manufacturer=:manufacturer", Car.class
         );
-
-        manufacterQuery.setParameter("manufacter", manufacter);
-
-        return manufacterQuery.getResultList();
-
+        manufacturerQuery.setParameter("manufacturer", manufacturer);
+        return manufacturerQuery.getResultList();
     }
 
     @Override
     public List<Car> findByModel(String model) {
-
-        TypedQuery<Car> modelQuery;
-
-        modelQuery = entityManager.createQuery(
+        TypedQuery<Car> modelQuery = entityManager.createQuery(
                 "FROM Car WHERE model=:model", Car.class
         );
-
         modelQuery.setParameter("model", model);
-
         return modelQuery.getResultList();
-
     }
 
     @Override
@@ -76,8 +64,8 @@ public class CarDAOImpl implements CarDAO {
         Car car = findById(id);
         if (car != null) {
             this.entityManager.remove(car);
-        }else{
-            throw new EntityNotFoundException("Car with id "+ id + " not found");
+        } else {
+            throw new EntityNotFoundException("Car with id " + id + " not found");
         }
     }
 }
