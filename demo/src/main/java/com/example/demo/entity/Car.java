@@ -27,6 +27,10 @@ public class Car {
         this.model = model;
     }
 
+    public int getId() { return this.id; }
+
+    public void setId( int id ) { this.id = id; }
+
     public String getManufacter() { return this.manufacter; }
 
     public void setManufacter( String manufacter ) { this.manufacter = manufacter; }
