@@ -15,4 +15,8 @@ public interface CarDAO {
 
     List<Car> findByModel(String model);
 
+    void update(Car car);
+
+    void delete(int id);
+
 }

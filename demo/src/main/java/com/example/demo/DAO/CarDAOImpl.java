@@ -2,6 +2,7 @@ package com.example.demo.DAO;
 
 import com.example.demo.entity.Car;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +62,22 @@ public class CarDAOImpl implements CarDAO {
 
         return modelQuery.getResultList();
 
+    }
+
+    @Override
+    @Transactional
+    public void update(Car car) {
+        this.entityManager.merge(car);
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        Car car = findById(id);
+        if (car != null) {
+            this.entityManager.remove(car);
+        }else{
+            throw new EntityNotFoundException("Car with id "+ id + " not found");
+        }
     }
 }
