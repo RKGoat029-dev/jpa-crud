@@ -39,16 +39,17 @@ public class DemoApplication {
 
 					case 1: // 1. Crear coche
 
+						Car car = new Car();
+
 						System.out.println("Indica la ID:");
-						int scId1 = scanner.nextInt();
+						car.setId(scanner.nextInt());
 
 						System.out.println("Indica la marca:");
-						String scManufacter = scanner.nextLine();
+						car.setManufacturer(scanner.nextLine());
 
 						System.out.println("Indica el modelo:");
-						String scModel = scanner.nextLine();
+						car.setModel(scanner.nextLine());
 
-						Car car = new Car(scId1, scManufacter, scModel);
 						carDAO.save(car);
 						break;
 
