@@ -30,11 +30,6 @@ public class CarDAOImpl implements CarDAO {
     }
 
     @Override
-    public List<Car> findByManufacter(String manufacter) {
-        return List.of();
-    }
-
-    @Override
     public List<Car> findByManufacturer(String manufacturer) {
         TypedQuery<Car> manufacturerQuery = entityManager.createQuery(
                 "FROM Car WHERE manufacturer=:manufacturer", Car.class
