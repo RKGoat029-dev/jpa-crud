@@ -21,15 +21,18 @@ public class CarDAOImpl implements CarDAO {
     public void save(Car car) { this.entityManager.persist(car); }
 
     @Override
+    @Transactional
     public Car findById(int id) { return this.entityManager.find(Car.class, id); }
 
     @Override
+    @Transactional
     public List<Car> findAll() {
         TypedQuery<Car> allQuery = entityManager.createQuery("FROM Car", Car.class);
         return allQuery.getResultList();
     }
 
     @Override
+    @Transactional
     public List<Car> findByManufacturer(String manufacturer) {
         TypedQuery<Car> manufacturerQuery = entityManager.createQuery(
                 "FROM Car WHERE manufacturer=:manufacturer", Car.class
@@ -39,6 +42,7 @@ public class CarDAOImpl implements CarDAO {
     }
 
     @Override
+    @Transactional
     public List<Car> findByModel(String model) {
         TypedQuery<Car> modelQuery = entityManager.createQuery(
                 "FROM Car WHERE model=:model", Car.class

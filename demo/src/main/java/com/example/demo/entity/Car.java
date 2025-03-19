@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 
 @Entity
 @Table(name = "car")
@@ -8,10 +9,9 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "manufacturer")
+    @Column(name = "manufacter")
     private String manufacturer;
 
     @Column(name = "model")
@@ -19,8 +19,7 @@ public class Car {
 
     public Car() {}
 
-    public Car(int id, String manufacturer, String model) {
-        this.id = id;
+    public Car(String manufacturer, String model) {
         this.manufacturer = manufacturer;
         this.model = model;
     }

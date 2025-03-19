@@ -6,6 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -44,6 +46,7 @@ public class DemoApplication {
 						System.out.println("Indica la ID:");
 						car.setId(scanner.nextInt());
 
+						scanner.nextLine();
 						System.out.println("Indica la marca:");
 						car.setManufacturer(scanner.nextLine());
 
@@ -53,33 +56,36 @@ public class DemoApplication {
 						carDAO.save(car);
 						break;
 
-					case 2: // 2. Buscar por Id
+					case 2: // 2. Buscar por Id - OK
 
 						System.out.println("Indica la ID:");
 						int scId2 = scanner.nextInt();
 
-						carDAO.findById(scId2);
+						System.out.println( carDAO.findById(scId2) );
 						break;
 
-					case 3: // 3. Todos los coches
+					case 3: // 3. Todos los coches - OK
 
-						carDAO.findAll();
+						List<Car> allCars = carDAO.findAll();
+						for(Car c : allCars) { System.out.println(c); }
 						break;
 
-					case 4: // 4. Filtrar por marca
+					case 4: // 4. Filtrar por marca - OK
 
 						System.out.println("Indica la marca:");
 						String scManufacter4 = scanner.nextLine();
 
-						carDAO.findByManufacturer(scManufacter4);
+						List<Car> manufacterCars = carDAO.findByManufacturer(scManufacter4);
+						for(Car c : manufacterCars) { System.out.println(c); }
 						break;
 
-					case 5: // 5. Filtrar por modelo
+					case 5: // 5. Filtrar por modelo - OK
 
 						System.out.println("Indica el modelo:");
 						String scModel5 = scanner.nextLine();
 
-						carDAO.findByModel(scModel5);
+						List<Car> modelCars = carDAO.findByModel(scModel5);
+						for(Car c : modelCars) { System.out.println(c); }
 						break;
 
 					case 6: // 6. Actualizar coche
