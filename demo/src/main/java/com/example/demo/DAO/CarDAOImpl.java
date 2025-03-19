@@ -18,11 +18,11 @@ public class CarDAOImpl implements CarDAO {
     public CarDAOImpl(EntityManager entityManager) { this.entityManager = entityManager; }
 
     @Override @Transactional
-    public void save(Car car) { this.entityManager.persist(car); }
+    public void save(Car car) { entityManager.persist(car); }
 
     @Override
     @Transactional
-    public Car findById(int id) { return this.entityManager.find(Car.class, id); }
+    public Car findById(int id) { return entityManager.find(Car.class, id); }
 
     @Override
     @Transactional

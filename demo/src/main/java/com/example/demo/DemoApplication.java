@@ -39,14 +39,10 @@ public class DemoApplication {
 
 				switch (choice) {
 
-					case 1: // 1. Crear coche
+					case 1: // 1. Crear coche - OK
 
 						Car car = new Car();
 
-						System.out.println("Indica la ID:");
-						car.setId(scanner.nextInt());
-
-						scanner.nextLine();
 						System.out.println("Indica la marca:");
 						car.setManufacturer(scanner.nextLine());
 
@@ -88,15 +84,24 @@ public class DemoApplication {
 						for(Car c : modelCars) { System.out.println(c); }
 						break;
 
-					case 6: // 6. Actualizar coche
+					case 6: // 6. Actualizar coche - OK
 
 						System.out.println("Indica la ID del coche a actualizar:");
 						int scId6 = scanner.nextInt();
 
-						carDAO.update( carDAO.findById(scId6) );
+						Car actualCar = carDAO.findById(scId6);
+
+						scanner.nextLine();
+						System.out.println("Indica la marca: ");
+						actualCar.setManufacturer(scanner.nextLine());
+
+						System.out.println("Indica el modelo:");
+						actualCar.setModel(scanner.nextLine());
+
+						carDAO.update(actualCar);
 						break;
 
-					case 7: // 7. Eliminar coche
+					case 7: // 7. Eliminar coche - OK
 
 						System.out.println("Indica la ID del coche a eliminar:");
 						int scId7 = scanner.nextInt();
