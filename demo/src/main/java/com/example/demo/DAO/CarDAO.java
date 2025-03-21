@@ -1,7 +1,6 @@
 package com.example.demo.DAO;
 
 import com.example.demo.entity.Car;
-import jakarta.transaction.Transactional;
 
 import java.util.List;
 

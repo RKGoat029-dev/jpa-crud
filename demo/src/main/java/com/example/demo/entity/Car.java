@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 
 @Entity
 @Table(name = "car")
