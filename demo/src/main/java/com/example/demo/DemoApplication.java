@@ -112,13 +112,14 @@ public class DemoApplication {
 					case 0:
 
 						System.out.println("Saliendo...");
+						System.exit(0);
 						break;
 
 					default:
 						System.out.println("Opción no válida.");
 				}
 
-			} while (choice != 0);
+			} while (true);
 
 		};
 
